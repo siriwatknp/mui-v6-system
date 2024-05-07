@@ -3291,7 +3291,6 @@ packages:
       '@emotion/react': 11.11.4(@types/react@18.3.1)(react@18.3.1)
       '@emotion/styled': 11.11.0(@emotion/react@11.11.4)(@types/react@18.3.1)(react@18.3.1)
       '@mui/base': '@pkg.csb.dev/mui/material-ui/commit/279e4ccc/@mui/base(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)'
-      '@mui/core-downloads-tracker': '@pkg.csb.dev/mui/material-ui/commit/279e4ccc/@mui/core-downloads-tracker'
       '@mui/system': '@pkg.csb.dev/mui/material-ui/commit/279e4ccc/@mui/system(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.3.1)(react@18.3.1)'
       '@mui/types': '@pkg.csb.dev/mui/material-ui/commit/279e4ccc/@mui/types(@types/react@18.3.1)'
       '@mui/utils': '@pkg.csb.dev/mui/material-ui/commit/279e4ccc/@mui/utils(@types/react@18.3.1)(react@18.3.1)'
