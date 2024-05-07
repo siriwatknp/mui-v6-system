@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
+import colorSchemeScript from "./getInitColorSchemeScript";
 import theme from "./theme";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        {colorSchemeScript}
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <CssVarsProvider theme={theme} defaultMode="system">
             {children}

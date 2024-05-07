@@ -13,8 +13,6 @@ import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
 
-import { PaletteMode } from "@mui/material";
-
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
@@ -24,7 +22,6 @@ import Info from "./Info";
 import InfoMobile from "./InfoMobile";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
-import ToggleColorMode from "./ToggleColorMode";
 import SitemarkIcon from "./SitemarkIcon";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
@@ -43,12 +40,7 @@ function getStepContent(step: number) {
 }
 
 export default function Checkout() {
-  const [mode, setMode] = React.useState<PaletteMode>("light");
   const [activeStep, setActiveStep] = React.useState(0);
-
-  const toggleColorMode = () => {
-    setMode((prev) => (prev === "dark" ? "light" : "dark"));
-  };
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -151,7 +143,6 @@ export default function Checkout() {
                 Back to
                 <SitemarkIcon />
               </Button>
-              <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
             </Box>
             <Box
               sx={{
@@ -163,7 +154,6 @@ export default function Checkout() {
                 height: 150,
               }}
             >
-              <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
               <Stepper
                 id="desktop-stepper"
                 activeStep={activeStep}
@@ -273,18 +263,25 @@ export default function Checkout() {
               <React.Fragment>
                 {getStepContent(activeStep)}
                 <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: { xs: "column-reverse", sm: "row" },
-                    justifyContent:
-                      activeStep !== 0 ? "space-between" : "flex-end",
-                    alignItems: "end",
-                    flexGrow: 1,
-                    gap: 1,
-                    pb: { xs: 12, sm: 0 },
-                    mt: { xs: 2, sm: 0 },
-                    mb: "60px",
-                  }}
+                  sx={[
+                    {
+                      display: "flex",
+                      flexDirection: { xs: "column-reverse", sm: "row" },
+                      alignItems: "end",
+                      flexGrow: 1,
+                      gap: 1,
+                      pb: { xs: 12, sm: 0 },
+                      mt: { xs: 2, sm: 0 },
+                      mb: "60px",
+                    },
+                    activeStep !== 0
+                      ? {
+                          justifyContent: "space-between",
+                        }
+                      : {
+                          justifyContent: "flex-end",
+                        },
+                  ]}
                 >
                   {activeStep !== 0 && (
                     <Button

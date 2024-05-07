@@ -1,87 +1,88 @@
-import * as React from 'react';
+import * as React from "react";
 
-import Alert from '@mui/material/Alert';
-import Box from '@mui/material/Box';
-import { Card as MuiCard } from '@mui/material';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import Checkbox from '@mui/material/Checkbox';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import RadioGroup from '@mui/material/RadioGroup';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
+import Alert from "@mui/material/Alert";
+import Box from "@mui/material/Box";
+import { Card as MuiCard } from "@mui/material";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardContent from "@mui/material/CardContent";
+import Checkbox from "@mui/material/Checkbox";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import RadioGroup from "@mui/material/RadioGroup";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 
-import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
-import CreditCardRoundedIcon from '@mui/icons-material/CreditCardRounded';
-import SimCardRoundedIcon from '@mui/icons-material/SimCardRounded';
-import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
+import AccountBalanceRoundedIcon from "@mui/icons-material/AccountBalanceRounded";
+import CreditCardRoundedIcon from "@mui/icons-material/CreditCardRounded";
+import SimCardRoundedIcon from "@mui/icons-material/SimCardRounded";
+import WarningRoundedIcon from "@mui/icons-material/WarningRounded";
 
 const Card = styled(MuiCard)<{ selected?: boolean }>(({ theme, selected }) => ({
-  border: '1px solid',
+  border: "1px solid",
   borderColor: theme.palette.divider,
-  width: '100%',
-  '&:hover': {
+  width: "100%",
+  "&:hover": {
     background:
-      theme.palette.mode === 'light'
-        ? 'linear-gradient(to bottom right, hsla(210, 100%, 97%, 0.5) 25%, hsla(210, 100%, 90%, 0.3) 100%)'
-        : 'linear-gradient(to right bottom, hsla(210, 100%, 12%, 0.2) 25%, hsla(210, 100%, 16%, 0.2) 100%)',
-    borderColor: theme.palette.mode === 'light' ? 'primary.light' : 'primary.dark',
+      theme.palette.mode === "light"
+        ? "linear-gradient(to bottom right, hsla(210, 100%, 97%, 0.5) 25%, hsla(210, 100%, 90%, 0.3) 100%)"
+        : "linear-gradient(to right bottom, hsla(210, 100%, 12%, 0.2) 25%, hsla(210, 100%, 16%, 0.2) 100%)",
+    borderColor:
+      theme.palette.mode === "light" ? "primary.light" : "primary.dark",
     boxShadow:
-      theme.palette.mode === 'light'
-        ? '0px 2px 8px hsla(0, 0%, 0%, 0.1)'
-        : '0px 1px 8px hsla(210, 100%, 25%, 0.5) ',
+      theme.palette.mode === "light"
+        ? "0px 2px 8px hsla(0, 0%, 0%, 0.1)"
+        : "0px 1px 8px hsla(210, 100%, 25%, 0.5) ",
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.up("md")]: {
     flexGrow: 1,
     maxWidth: `calc(50% - ${theme.spacing(1)})`,
   },
   ...(selected && {
     backgroundColor: theme.palette.action.selected,
     borderColor:
-      theme.palette.mode === 'light'
+      theme.palette.mode === "light"
         ? theme.palette.primary.light
         : theme.palette.primary.dark,
   }),
 }));
 
-const PaymentContainer = styled('div')(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  width: '100%',
+const PaymentContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  width: "100%",
   height: 375,
   padding: theme.spacing(3),
-  borderRadius: '20px',
-  border: '1px solid ',
+  borderRadius: "20px",
+  border: "1px solid ",
   borderColor: theme.palette.divider,
   background:
-    theme.palette.mode === 'light'
-      ? 'linear-gradient(to bottom right, hsla(210, 100%, 97%, 0.3) 25%, hsla(210, 100%, 90%, 0.3) 100%)'
-      : 'linear-gradient(to right bottom, hsla(210, 100%, 12%, 0.2) 25%, hsla(210, 100%, 16%, 0.2) 100%)',
-  boxShadow: '0px 4px 8px hsla(210, 0%, 0%, 0.05)',
-  [theme.breakpoints.up('xs')]: {
+    theme.palette.mode === "light"
+      ? "linear-gradient(to bottom right, hsla(210, 100%, 97%, 0.3) 25%, hsla(210, 100%, 90%, 0.3) 100%)"
+      : "linear-gradient(to right bottom, hsla(210, 100%, 12%, 0.2) 25%, hsla(210, 100%, 16%, 0.2) 100%)",
+  boxShadow: "0px 4px 8px hsla(210, 0%, 0%, 0.05)",
+  [theme.breakpoints.up("xs")]: {
     height: 300,
   },
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up("sm")]: {
     height: 350,
   },
 }));
 
-const FormGrid = styled('div')(() => ({
-  display: 'flex',
-  flexDirection: 'column',
+const FormGrid = styled("div")(() => ({
+  display: "flex",
+  flexDirection: "column",
 }));
 
 export default function PaymentForm() {
-  const [paymentType, setPaymentType] = React.useState('creditCard');
-  const [cardNumber, setCardNumber] = React.useState('');
-  const [cvv, setCvv] = React.useState('');
-  const [expirationDate, setExpirationDate] = React.useState('');
+  const [paymentType, setPaymentType] = React.useState("creditCard");
+  const [cardNumber, setCardNumber] = React.useState("");
+  const [cvv, setCvv] = React.useState("");
+  const [expirationDate, setExpirationDate] = React.useState("");
 
   const handlePaymentTypeChange = (event: {
     target: { value: React.SetStateAction<string> };
@@ -90,23 +91,23 @@ export default function PaymentForm() {
   };
 
   const handleCardNumberChange = (event: { target: { value: string } }) => {
-    const value = event.target.value.replace(/\D/g, '');
-    const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+    const value = event.target.value.replace(/\D/g, "");
+    const formattedValue = value.replace(/(\d{4})(?=\d)/g, "$1 ");
     if (value.length <= 16) {
       setCardNumber(formattedValue);
     }
   };
 
   const handleCvvChange = (event: { target: { value: string } }) => {
-    const value = event.target.value.replace(/\D/g, '');
+    const value = event.target.value.replace(/\D/g, "");
     if (value.length <= 3) {
       setCvv(value);
     }
   };
 
   const handleExpirationDateChange = (event: { target: { value: string } }) => {
-    const value = event.target.value.replace(/\D/g, '');
-    const formattedValue = value.replace(/(\d{2})(?=\d{2})/, '$1/');
+    const value = event.target.value.replace(/\D/g, "");
+    const formattedValue = value.replace(/(\d{2})(?=\d{2})/, "$1/");
     if (value.length <= 4) {
       setExpirationDate(formattedValue);
     }
@@ -121,58 +122,72 @@ export default function PaymentForm() {
           value={paymentType}
           onChange={handlePaymentTypeChange}
           sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', sm: 'row' },
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
             gap: 2,
           }}
         >
-          <Card selected={paymentType === 'creditCard'}>
+          <Card selected={paymentType === "creditCard"}>
             <CardActionArea
-              onClick={() => setPaymentType('creditCard')}
+              onClick={() => setPaymentType("creditCard")}
               sx={{
-                '.MuiCardActionArea-focusHighlight': {
-                  backgroundColor: 'transparent',
+                ".MuiCardActionArea-focusHighlight": {
+                  backgroundColor: "transparent",
                 },
-                '&:focus-visible': {
-                  backgroundColor: 'action.hover',
+                "&:focus-visible": {
+                  backgroundColor: "action.hover",
                 },
               }}
             >
-              <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <CardContent
+                sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              >
                 <CreditCardRoundedIcon
                   fontSize="small"
-                  sx={(theme) => ({
-                    color: theme.palette.mode === 'light' ? 'grey.400' : 'grey.600',
-                    ...(paymentType === 'creditCard' && {
-                      color: 'primary.main',
+                  sx={[
+                    (theme) => ({
+                      color: "grey.600",
+                      ...theme.applyStyles("light", {
+                        color: "grey.400",
+                      }),
                     }),
-                  })}
+                    paymentType === "creditCard" && {
+                      color: "primary.main",
+                    },
+                  ]}
                 />
                 <Typography fontWeight="medium">Card</Typography>
               </CardContent>
             </CardActionArea>
           </Card>
-          <Card selected={paymentType === 'bankTransfer'}>
+          <Card selected={paymentType === "bankTransfer"}>
             <CardActionArea
-              onClick={() => setPaymentType('bankTransfer')}
+              onClick={() => setPaymentType("bankTransfer")}
               sx={{
-                '.MuiCardActionArea-focusHighlight': {
-                  backgroundColor: 'transparent',
+                ".MuiCardActionArea-focusHighlight": {
+                  backgroundColor: "transparent",
                 },
-                '&:focus-visible': {
-                  backgroundColor: 'action.hover',
+                "&:focus-visible": {
+                  backgroundColor: "action.hover",
                 },
               }}
             >
-              <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <CardContent
+                sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              >
                 <AccountBalanceRoundedIcon
                   fontSize="small"
-                  sx={(theme) => ({
-                    color: theme.palette.mode === 'light' ? 'grey.400' : 'grey.600',
-                    ...(paymentType === 'bankTransfer' && {
-                      color: 'primary.main',
+                  sx={[
+                    (theme) => ({
+                      color: "grey.600",
+                      ...theme.applyStyles("light", {
+                        color: "grey.400",
+                      }),
                     }),
-                  })}
+                    paymentType === "bankTransfer" && {
+                      color: "primary.main",
+                    },
+                  ]}
                 />
                 <Typography fontWeight="medium">Bank account</Typography>
               </CardContent>
@@ -180,31 +195,31 @@ export default function PaymentForm() {
           </Card>
         </RadioGroup>
       </FormControl>
-      {paymentType === 'creditCard' && (
+      {paymentType === "creditCard" && (
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
             gap: 2,
           }}
         >
           <PaymentContainer>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography variant="subtitle2">Credit card</Typography>
-              <CreditCardRoundedIcon sx={{ color: 'text.secondary' }} />
+              <CreditCardRoundedIcon sx={{ color: "text.secondary" }} />
             </Box>
             <SimCardRoundedIcon
               sx={{
                 fontSize: { xs: 48, sm: 56 },
-                transform: 'rotate(90deg)',
-                color: 'text.secondary',
+                transform: "rotate(90deg)",
+                color: "text.secondary",
               }}
             />
             <Box
               sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                width: '100%',
+                display: "flex",
+                justifyContent: "space-between",
+                width: "100%",
                 gap: 2,
               }}
             >
@@ -221,7 +236,7 @@ export default function PaymentForm() {
                   onChange={handleCardNumberChange}
                 />
               </FormGrid>
-              <FormGrid sx={{ maxWidth: '20%' }}>
+              <FormGrid sx={{ maxWidth: "20%" }}>
                 <FormLabel htmlFor="cvv" required>
                   CVV
                 </FormLabel>
@@ -235,7 +250,7 @@ export default function PaymentForm() {
                 />
               </FormGrid>
             </Box>
-            <Box sx={{ display: 'flex', gap: 2 }}>
+            <Box sx={{ display: "flex", gap: 2 }}>
               <FormGrid sx={{ flexGrow: 1 }}>
                 <FormLabel htmlFor="card-name" required>
                   Name
@@ -268,11 +283,11 @@ export default function PaymentForm() {
           />
         </Box>
       )}
-      {paymentType === 'bankTransfer' && (
+      {paymentType === "bankTransfer" && (
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
             gap: 2,
           }}
         >
@@ -285,7 +300,7 @@ export default function PaymentForm() {
           <Typography variant="body1" gutterBottom>
             Please transfer the payment to the bank account details shown below.
           </Typography>
-          <Box sx={{ display: 'flex', gap: 1 }}>
+          <Box sx={{ display: "flex", gap: 1 }}>
             <Typography variant="body1" color="text.secondary">
               Bank:
             </Typography>
@@ -293,7 +308,7 @@ export default function PaymentForm() {
               Mastercredit
             </Typography>
           </Box>
-          <Box sx={{ display: 'flex', gap: 1 }}>
+          <Box sx={{ display: "flex", gap: 1 }}>
             <Typography variant="body1" color="text.secondary">
               Account number:
             </Typography>
@@ -301,7 +316,7 @@ export default function PaymentForm() {
               123456789
             </Typography>
           </Box>
-          <Box sx={{ display: 'flex', gap: 1 }}>
+          <Box sx={{ display: "flex", gap: 1 }}>
             <Typography variant="body1" color="text.secondary">
               Routing number:
             </Typography>
