@@ -127,10 +127,22 @@ export default function AppAppBar() {
               alignItems: "center",
             }}
           >
-            <Button color="primary" variant="text" size="small">
+            <Button
+              component="a"
+              href="/sign-in/"
+              color="primary"
+              variant="text"
+              size="small"
+            >
               Sign in
             </Button>
-            <Button color="primary" variant="contained" size="small">
+            <Button
+              component="a"
+              href="/sign-up/"
+              color="primary"
+              variant="contained"
+              size="small"
+            >
               Sign up
             </Button>
           </Box>
