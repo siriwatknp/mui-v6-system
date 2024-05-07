@@ -11,69 +11,21 @@ import Stack from "@mui/material/Stack";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Typography from "@mui/material/Typography";
 
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { PaletteMode } from "@mui/material";
 
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
-import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 
 import AddressForm from "./AddressForm";
-import getCheckoutTheme from "./getCheckoutTheme";
 import Info from "./Info";
 import InfoMobile from "./InfoMobile";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
 import ToggleColorMode from "./ToggleColorMode";
 import SitemarkIcon from "./SitemarkIcon";
-
-interface ToggleCustomThemeProps {
-  showCustomTheme: Boolean;
-  toggleCustomTheme: () => void;
-}
-
-function ToggleCustomTheme({
-  showCustomTheme,
-  toggleCustomTheme,
-}: ToggleCustomThemeProps) {
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100dvw",
-        position: "fixed",
-        bottom: 24,
-      }}
-    >
-      <ToggleButtonGroup
-        color="primary"
-        exclusive
-        value={showCustomTheme}
-        onChange={toggleCustomTheme}
-        aria-label="Toggle design language"
-        sx={{
-          backgroundColor: "background.default",
-          "& .Mui-selected": {
-            pointerEvents: "none",
-          },
-        }}
-      >
-        <ToggleButton value>
-          <AutoAwesomeRoundedIcon sx={{ fontSize: "20px", mr: 1 }} />
-          Custom theme
-        </ToggleButton>
-        <ToggleButton value={false}>Material Design 2</ToggleButton>
-      </ToggleButtonGroup>
-    </Box>
-  );
-}
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
@@ -92,17 +44,10 @@ function getStepContent(step: number) {
 
 export default function Checkout() {
   const [mode, setMode] = React.useState<PaletteMode>("light");
-  const [showCustomTheme, setShowCustomTheme] = React.useState(true);
-  const checkoutTheme = createTheme(getCheckoutTheme(mode));
-  const defaultTheme = createTheme({ palette: { mode } });
   const [activeStep, setActiveStep] = React.useState(0);
 
   const toggleColorMode = () => {
     setMode((prev) => (prev === "dark" ? "light" : "dark"));
-  };
-
-  const toggleCustomTheme = () => {
-    setShowCustomTheme((prev) => !prev);
   };
 
   const handleNext = () => {
@@ -114,7 +59,7 @@ export default function Checkout() {
   };
 
   return (
-    <ThemeProvider theme={showCustomTheme ? checkoutTheme : defaultTheme}>
+    <React.Fragment>
       <CssBaseline />
       <Grid container sx={{ height: { xs: "100%", sm: "100dvh" } }}>
         <Grid
@@ -144,7 +89,7 @@ export default function Checkout() {
             <Button
               startIcon={<ArrowBackRoundedIcon />}
               component="a"
-              href="/material-ui/getting-started/templates/"
+              href="/"
               sx={{ ml: "-8px" }}
             >
               Back to
@@ -200,7 +145,7 @@ export default function Checkout() {
               <Button
                 startIcon={<ArrowBackRoundedIcon />}
                 component="a"
-                href="/material-ui/getting-started/templates/"
+                href="/"
                 sx={{ alignSelf: "start" }}
               >
                 Back to
@@ -382,10 +327,6 @@ export default function Checkout() {
           </Box>
         </Grid>
       </Grid>
-      <ToggleCustomTheme
-        toggleCustomTheme={toggleCustomTheme}
-        showCustomTheme={showCustomTheme}
-      />
-    </ThemeProvider>
+    </React.Fragment>
   );
 }
