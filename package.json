@@ -9,6 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "11.11.0",
+    "@emotion/react": "11.11.4",
+    "@emotion/styled": "11.11.0",
+    "@mui/icons-material": "https://pkg.csb.dev/mui/material-ui/commit/279e4ccc/@mui/icons-material",
+    "@mui/material": "https://pkg.csb.dev/mui/material-ui/commit/279e4ccc/@mui/material",
+    "@mui/material-nextjs": "^6.0.0-alpha.5",
     "react": "^18",
     "react-dom": "^18",
     "next": "14.2.3"
