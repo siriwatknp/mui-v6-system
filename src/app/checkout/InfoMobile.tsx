@@ -32,7 +32,6 @@ export default function InfoMobile({ totalPrice }: InfoProps) {
       <Info totalPrice={totalPrice} />
     </Box>
   );
-
   return (
     <div>
       <Button
