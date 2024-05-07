@@ -38,11 +38,7 @@ export default function SignInSide() {
             p: { xs: 2, sm: 4 },
           }}
         >
-          <Button
-            startIcon={<ArrowBackRoundedIcon />}
-            component="a"
-            href="/material-ui/getting-started/templates/"
-          >
+          <Button startIcon={<ArrowBackRoundedIcon />} component="a" href="/">
             Back
           </Button>
         </Stack>
