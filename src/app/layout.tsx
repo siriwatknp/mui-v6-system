@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import colorSchemeScript from "./getInitColorSchemeScript";
 import theme from "./theme";
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         {colorSchemeScript}
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <CssVarsProvider theme={theme} defaultMode="system">
+            <CssBaseline enableColorScheme />
             {children}
           </CssVarsProvider>
         </AppRouterCacheProvider>
